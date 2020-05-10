@@ -9,7 +9,8 @@ public class ballScript : MonoBehaviour
 	public GameObject masterScript;
 	
 	public Animator animtr;
-    // Start is called before the first frame update
+	// Start is called before the first frame update
+	public AudioSource hitEffect;
 
     void Start()
     {
@@ -39,6 +40,10 @@ public class ballScript : MonoBehaviour
 			/* masterScript.GetComponent<ScoringScript>().UpdateScore(other.collider.name); */
 			StartCoroutine(jeda()); // move the ball to center
         }
+		if (other.collider.tag == "Player")
+		{
+			hitEffect.Play();
+		}
     }
 	
 	IEnumerator jeda(){
